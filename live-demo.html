@@ -126,7 +126,7 @@
   .sa h1 .sa-ico{width:1.5rem;height:1.5rem;color:var(--sa-primary)}
   .sa-badge{display:inline-flex;align-items:center;border-radius:999px;border:1px solid rgba(252,135,6,.32);background:var(--accent-soft);padding:.125rem .6rem;font-family:'Inter',sans-serif;font-size:10px;line-height:1rem;font-weight:700;letter-spacing:.02em;color:var(--sa-primary)}
   .sa-sub{margin-top:.25rem;font-size:.875rem;line-height:1.25rem;color:var(--sa-muted-fg)}
-  .sa-head-text{flex:1;min-width:0}
+  .sa-head-text{flex:1 1 20rem;min-width:0}
   .sa-title-row{display:flex;align-items:center;justify-content:space-between;gap:.75rem}
   .sa-test-now{display:none;align-items:center;gap:.35rem;flex-shrink:0;padding:.45rem .85rem;border-radius:10px;background:var(--accent);color:#160b00;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:700;white-space:nowrap;box-shadow:0 8px 22px -10px rgba(252,135,6,.6);transition:background .15s}
   .sa-test-now:hover{background:var(--accent-press)}
@@ -217,10 +217,65 @@
   .sa-ph-send:hover{background:#06cf9c}
   .sa-ph-send:disabled{opacity:.5;pointer-events:none}
   .sa-ph-send .sa-ico{width:1.25rem;height:1.25rem}
+
+  /* Loading, create-admin / log-in gate */
+  .sa-boot{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:.6rem;min-height:50vh;color:var(--sa-muted-fg);font-size:.9rem}
+  .sa-spinner{display:inline-block;width:1rem;height:1rem;flex-shrink:0;border:2px solid var(--sa-border);border-top-color:var(--sa-primary);border-radius:50%;animation:sa-spin .8s linear infinite}
+  @keyframes sa-spin{to{transform:rotate(360deg)}}
+  .sa-auth{max-width:46rem;margin:0 auto;padding-bottom:1rem}
+  .sa-auth-card{padding:1.5rem}
+  .sa-auth-card--sm{max-width:26rem;margin:0 auto}
+  .sa-auth-head{display:flex;align-items:flex-start;gap:.85rem;margin-bottom:1.4rem}
+  .sa .sa-auth-head h1{font-size:1.4rem;line-height:1.8rem}
+  .sa-auth-ico{display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;border:1px solid rgba(252,135,6,.32);border-radius:12px;background:var(--accent-soft);color:var(--sa-primary)}
+  .sa-auth-ico .sa-ico{width:1.3rem;height:1.3rem}
+  .sa-auth-grid{display:grid;grid-template-columns:1fr;gap:.9rem 1rem}
+  .sa-auth-grid .sa-field{margin-top:0}
+  .sa-pw{position:relative}
+  .sa-pw .sa-control{padding-right:2.75rem}
+  .sa-pw-toggle{position:absolute;top:50%;right:.35rem;display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;transform:translateY(-50%);border:0;border-radius:8px;background:transparent;color:var(--sa-muted-fg);cursor:pointer}
+  .sa-pw-toggle:hover{background:var(--sa-muted);color:var(--sa-fg)}
+  .sa-form-error{margin-top:.9rem;font-size:.85rem;line-height:1.3rem;color:#ff9a8a}
+  .sa-form-error:empty{display:none}
+  .sa-form-error .sa-link{margin-left:.35rem}
+  .sa-auth-submit{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;height:2.9rem;margin-top:1.1rem;border:0;border-radius:10px;background:var(--sa-primary);color:#160b00;font-family:'Plus Jakarta Sans',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;box-shadow:0 10px 30px -10px rgba(252,135,6,.6);transition:background .15s}
+  .sa-auth-submit:hover{background:var(--accent-press)}
+  .sa-auth-submit:disabled{opacity:.7;cursor:progress}
+  .sa-auth-switch{margin-top:1rem;text-align:center;font-size:.85rem;color:var(--sa-muted-fg)}
+  .sa-link{padding:0;border:0;background:none;color:var(--sa-primary);font:inherit;font-weight:600;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+  @media (min-width:640px){
+    .sa-auth-card{padding:2rem}
+    .sa-auth-grid{grid-template-columns:1fr 1fr}
+    .sa-auth-grid--one{grid-template-columns:1fr}
+    .sa-span-2{grid-column:span 2}
+  }
+
+  /* Signed-in extras: usage, log out, budget card, live chat states, toast */
+  .sa-head-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem}
+  .sa-usage{display:inline-flex;align-items:center;padding:.3rem .75rem;border:1px solid var(--sa-border);border-radius:999px;background:var(--sa-card);color:var(--sa-muted-fg);font-size:.78rem;white-space:nowrap}
+  .sa-usage b{margin:0 .25rem;color:var(--sa-fg);font-weight:600}
+  .sa-btn-sm{height:2rem;padding:0 .8rem;font-size:.8rem}
+  .sa-btn-sm .sa-ico{width:.9rem;height:.9rem}
+  .sa-budget{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem 1rem;margin-bottom:.75rem;padding:.9rem 1rem;border:1px solid rgba(252,135,6,.45);border-radius:var(--radius);background:linear-gradient(180deg,rgba(252,135,6,.1),var(--sa-card))}
+  .sa-budget p{flex:1 1 16rem;font-size:.875rem;line-height:1.35rem;color:var(--sa-fg)}
+  .sa-budget-btn{display:inline-flex;align-items:center;flex-shrink:0;padding:.55rem 1rem;border-radius:10px;background:var(--sa-primary);color:#160b00;font-family:'Plus Jakarta Sans',sans-serif;font-size:.85rem;font-weight:700;box-shadow:0 8px 22px -10px rgba(252,135,6,.6);transition:background .15s}
+  .sa-budget-btn:hover{background:var(--accent-press)}
+  .sa-bubble.pending{display:inline-flex;align-items:center;gap:.5rem;color:var(--sa-muted-fg);font-size:.8rem}
+  .sa-comp-input:disabled,.sa-ph-input:disabled{cursor:not-allowed;opacity:.55}
+  .sa-comp-btn:disabled{opacity:.5;cursor:default;pointer-events:none}
+  .sa-ph-typing{display:inline-flex;align-items:center;gap:.4rem;font-size:12px}
+  .sa-ph-typing .sa-spinner{width:.8rem;height:.8rem;border-color:rgba(233,237,239,.3);border-top-color:#e9edef}
+  .sa-ph-bubble img{display:block;width:100%;max-height:12rem;margin-bottom:.25rem;border-radius:4px;object-fit:cover}
+  .sa-ph-note{margin-top:.25rem;padding:.125rem .375rem;border-radius:4px;background:rgba(0,0,0,.25);color:#fde68a;font-size:11px;line-height:1rem}
+  .sa-toast{position:fixed;bottom:1.25rem;left:50%;z-index:3000;max-width:min(28rem,calc(100vw - 2rem));padding:.7rem 1rem;transform:translateX(-50%);border:1px solid var(--line);border-radius:12px;background:#1b1a22;color:var(--ink);font-size:.875rem;line-height:1.3rem;box-shadow:0 18px 40px -16px rgba(0,0,0,.8)}
+  .sa-toast.error{border-color:rgba(255,130,110,.5)}
+  .sa-toast.ok{border-color:rgba(37,211,102,.45)}
+
   /* Mobile: the test phone runs edge to edge, no frame */
   @media (max-width:767px){
     .sa-phone{height:calc(100vh - 71px);height:calc(100dvh - 71px);margin:0 -24px;border-radius:0;border-width:6px 0;box-shadow:none}
     .sa-wrap{padding-bottom:0}
+    .sa-wrap.sa-auth-wrap{padding-bottom:2rem}
   }
   @media (min-width:768px){
     .sa-tablist{display:flex;flex-wrap:wrap}
@@ -238,6 +293,8 @@
     .sa-panel:not([hidden]){display:flex;flex:1;min-height:0}
     .sa-panel>.sa-card{flex:1;min-width:0}
     .sa-trainer,.sa-settings,.sa-phone{height:auto;min-height:0}
+    .sa-auth-wrap{overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--sa-border) transparent}
+    .sa-boot{height:100%;min-height:0}
   }
 </style>
 </head>
@@ -271,7 +328,61 @@
   </div>
 </header>
 <section class="sa" aria-label="Sales Agent live demo">
-  <div class="sa-wrap sa-grid">
+  <div class="sa-boot" id="saBoot"><span class="sa-spinner" aria-hidden="true"></span>Loading…</div>
+
+  <!-- No session: create a demo admin, or log in -->
+  <div class="sa-wrap sa-auth-wrap" id="saAuth" hidden>
+    <div class="sa-auth">
+      <section class="sa-card sa-auth-card" id="saCreateCard" aria-labelledby="saCreateTitle">
+        <div class="sa-auth-head">
+          <span class="sa-auth-ico"><svg class="sa-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg></span>
+          <div>
+            <h1 id="saCreateTitle">Create Admin</h1>
+            <p class="sa-sub">Create your free demo account, then train and test your own AI Sales Agent.</p>
+          </div>
+        </div>
+        <form id="saCreateForm" novalidate>
+          <div class="sa-auth-grid">
+            <div class="sa-field"><label for="caFirst">First name</label><input id="caFirst" name="first_name" class="sa-control" type="text" autocomplete="given-name" placeholder="First name"></div>
+            <div class="sa-field"><label for="caLast">Last name</label><input id="caLast" name="last_name" class="sa-control" type="text" autocomplete="family-name" placeholder="Last name"></div>
+            <div class="sa-field"><label for="caWhatsapp">WhatsApp number</label><input id="caWhatsapp" name="whatsapp_number" class="sa-control" type="tel" inputmode="tel" autocomplete="tel" placeholder="WhatsApp number"></div>
+            <div class="sa-field"><label for="caPhone">Contact phone</label><input id="caPhone" name="phone" class="sa-control" type="tel" inputmode="tel" autocomplete="tel" placeholder="Contact phone"></div>
+            <div class="sa-field sa-span-2"><label for="caEmail">Email</label><input id="caEmail" name="email" class="sa-control" type="email" inputmode="email" autocomplete="email" placeholder="you@business.com"></div>
+            <div class="sa-field"><label for="caPassword">Password</label><div class="sa-pw"><input id="caPassword" name="password" class="sa-control" type="password" autocomplete="new-password" placeholder="At least 6 characters"><button type="button" class="sa-pw-toggle" aria-label="Show password" aria-pressed="false"></button></div></div>
+            <div class="sa-field"><label for="caConfirm">Confirm password</label><div class="sa-pw"><input id="caConfirm" name="confirm_password" class="sa-control" type="password" autocomplete="new-password" placeholder="Same password again"><button type="button" class="sa-pw-toggle" aria-label="Show password" aria-pressed="false"></button></div></div>
+            <div class="sa-field sa-span-2"><label for="caAddress">Address</label><input id="caAddress" name="address" class="sa-control" type="text" autocomplete="street-address" placeholder="Address"></div>
+            <div class="sa-field"><label for="caCity">City</label><input id="caCity" name="city" class="sa-control" type="text" autocomplete="address-level2" placeholder="City"></div>
+            <div class="sa-field"><label for="caState">State</label><input id="caState" name="state" class="sa-control" type="text" autocomplete="address-level1" placeholder="State"></div>
+            <div class="sa-field"><label for="caPincode">Pincode</label><input id="caPincode" name="pincode" class="sa-control" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="Pincode"></div>
+          </div>
+          <p class="sa-form-error" id="saCreateError" role="alert"></p>
+          <button type="submit" class="sa-auth-submit" id="saCreateBtn">Create Admin</button>
+          <p class="sa-auth-switch">Already created? <button type="button" class="sa-link" id="saToLogin">Log in</button></p>
+        </form>
+      </section>
+
+      <section class="sa-card sa-auth-card sa-auth-card--sm" id="saLoginCard" aria-labelledby="saLoginTitle" hidden>
+        <div class="sa-auth-head">
+          <span class="sa-auth-ico"><svg class="sa-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg></span>
+          <div>
+            <h1 id="saLoginTitle">Log in</h1>
+            <p class="sa-sub">Continue training your Sales Agent.</p>
+          </div>
+        </div>
+        <form id="saLoginForm" novalidate>
+          <div class="sa-auth-grid sa-auth-grid--one">
+            <div class="sa-field"><label for="liEmail">Email</label><input id="liEmail" name="email" class="sa-control" type="email" inputmode="email" autocomplete="email" placeholder="you@business.com"></div>
+            <div class="sa-field"><label for="liPassword">Password</label><div class="sa-pw"><input id="liPassword" name="password" class="sa-control" type="password" autocomplete="current-password" placeholder="Your password"><button type="button" class="sa-pw-toggle" aria-label="Show password" aria-pressed="false"></button></div></div>
+          </div>
+          <p class="sa-form-error" id="saLoginError" role="alert"></p>
+          <button type="submit" class="sa-auth-submit" id="saLoginBtn">Log in</button>
+          <p class="sa-auth-switch">New here? <button type="button" class="sa-link" id="saToCreate">Create Admin</button></p>
+        </form>
+      </section>
+    </div>
+  </div>
+
+  <div class="sa-wrap sa-grid" id="saApp" hidden>
     <!-- Header + training -->
     <div class="sa-tabs">
     <div class="sa-head">
@@ -289,7 +400,19 @@
         </div>
         <p class="sa-sub">Train an AI salesperson by chatting with it and adding your catalog, then test it as a customer.</p>
       </div>
+      <div class="sa-head-meta">
+        <span class="sa-usage" id="saUsage" hidden></span>
+        <button type="button" class="sa-btn sa-btn-outline sa-btn-sm" id="saLogout">
+          <svg class="sa-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>
+          Log out
+        </button>
+      </div>
     </div>
+
+        <div class="sa-budget" id="saBudget" role="alert" hidden>
+          <p>Your free demo credit is used up. To keep going, finish onboarding — everything you taught the Sales Agent stays.</p>
+          <a class="sa-budget-btn" id="saOnboard" href="https://woochat.esowolf.in/onboarding?from=demo">Onboard now</a>
+        </div>
 
         <div class="sa-tablist" role="tablist" aria-label="Sales Agent sections">
           <button type="button" class="sa-tab" role="tab" aria-selected="true" aria-controls="saPanelTrainer" data-tab="trainer">Trainer chat</button>
@@ -313,7 +436,7 @@
             <div class="sa-msgs" id="saTrainMsgs"></div>
             <form class="sa-form" id="saTrainForm">
               <div class="sa-composer">
-              <button type="button" class="sa-comp-btn" aria-label="Attach a picture" title="Attach a picture">
+              <button type="button" class="sa-comp-btn" id="saAttach" aria-label="Attach a picture" title="Attach a picture">
                 <svg class="sa-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 5h6"/><path d="M19 2v6"/><path d="M21 11.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7.5"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/><circle cx="9" cy="9" r="2"/></svg>
               </button>
               <textarea class="sa-comp-input" id="saTrainInput" rows="1" placeholder="Tell the trainer about your business, or attach a picture…" aria-label="Message to the trainer"></textarea>
@@ -383,6 +506,7 @@
         </form>
       </section>
   </div>
+  <div class="sa-toast" id="saToast" role="status" aria-live="polite" hidden></div>
 </section>
 <script>
   // subtle scroll progress bar
@@ -403,25 +527,245 @@
     io.observe(el);
   });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4/dist/umd/supabase.js"></script>
 <script>
-// Sales Agent demo — UI only: static demo data + local state, nothing is sent anywhere.
+// Live Demo config — the WOO Chat App's live backend. The anon key is the App's public
+// publishable key (woochatv1 src/integrations/supabase/client.ts); change it here only.
+var WOOCHAT_DEMO_CONFIG = {
+  supabaseUrl: 'https://spx.aurotec.in',
+  supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzg1NzY1NjAyLCJleHAiOjIxMDExMjU2MDJ9.itvM-4RuNQwyhAGI1l6ddsUt0zCnNYVBASScgQHMdmA',
+  appUrl: 'https://woochat.esowolf.in'
+};
+</script>
+<script>
+// Sales Agent live demo: a demo admin (create-demo-admin) trains and tests the Sales Agent
+// through the App's sales-agent function, on the platform AI with a small budget.
 (function(){
+  var cfg=WOOCHAT_DEMO_CONFIG;
+  var $=function(id){return document.getElementById(id);};
+  var sb=(window.supabase&&window.supabase.createClient)?window.supabase.createClient(cfg.supabaseUrl,cfg.supabaseAnonKey):null;
+
   var SPARKLES='<svg class="sa-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>';
+  var EYE='<svg class="sa-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>';
+  var EYE_OFF='<svg class="sa-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/></svg>';
 
-  var training=[];
-  var turns=[];
-
-  function row(rowCls, bubbleCls, text){
-    var r=document.createElement('div');r.className=rowCls;
-    var b=document.createElement('div');b.className=bubbleCls;b.textContent=text;
-    r.appendChild(b);return r;
+  // ── Friendly messages ──
+  var MSG={
+    network:"Couldn't reach WooChat. Check your internet connection and try again.",
+    rate_limited:'Too many demo sign-ups from your network. Please try again in an hour.',
+    demo_ai_unavailable:'The demo AI is busy right now. Please try again in a few minutes.',
+    demo_action_not_allowed:'The live demo can only train and test the Sales Agent.',
+    wrong_password:'Wrong email or password. Please check and try again.',
+    email_taken:'This email already has an account.',
+    session:'Your session has ended. Please log in again.'
+  };
+  function coded(code){var e=new Error(MSG[code]);e.code=code;return e;}
+  function messageFor(e){
+    if(e&&e.code&&MSG[e.code]) return MSG[e.code];
+    if(e&&e.status===429) return MSG.rate_limited;
+    return (e&&e.message)||'Something went wrong. Please try again.';
   }
+  var isNetworkError=function(m){return /failed to fetch|networkerror|load failed|network request failed|fetch/i.test(String(m||''));};
+
+  // Every function call goes through supabase.functions.invoke (anon key, or the user's JWT).
+  async function invoke(fn, body){
+    if(!sb) throw coded('network');
+    var res;
+    try{res=await sb.functions.invoke(fn,{body:body});}
+    catch(_){throw coded('network');}
+    if(res.error){
+      var ctx=res.error.context, status=0, data=null;
+      if(ctx&&typeof ctx.json==='function'){
+        status=ctx.status||0;
+        try{data=await ctx.json();}catch(_){}
+      }
+      if(!status) throw coded('network');
+      var err=new Error((data&&data.error)||res.error.message||'Something went wrong. Please try again.');
+      err.code=(data&&data.error_code)||''; err.status=status;
+      if(!err.code&&/already taken|already registered|already exists/i.test(err.message)) err.code='email_taken';
+      throw err;
+    }
+    if(res.data&&res.data.error){var e2=new Error(res.data.error);e2.code=res.data.error_code||'';throw e2;}
+    return res.data||{};
+  }
+  async function signIn(email,password){
+    if(!sb) throw coded('network');
+    var r;
+    try{r=await sb.auth.signInWithPassword({email:email,password:password});}
+    catch(_){throw coded('network');}
+    if(r.error){
+      if(/invalid login credentials/i.test(r.error.message)) throw coded('wrong_password');
+      if(r.error.name==='AuthRetryableFetchError'||isNetworkError(r.error.message)) throw coded('network');
+      throw new Error(r.error.message);
+    }
+    return r.data.session;
+  }
+
+  // ── Toast ──
+  var toastTimer;
+  function toast(text,kind){
+    var t=$('saToast');t.textContent=text;t.className='sa-toast'+(kind?' '+kind:'');t.hidden=false;
+    clearTimeout(toastTimer);toastTimer=setTimeout(function(){t.hidden=true;},5000);
+  }
+
+  // ── Views: loading → create / log in → the Sales Agent ──
+  var views={boot:$('saBoot'),auth:$('saAuth'),app:$('saApp')};
+  function show(view){Object.keys(views).forEach(function(k){views[k].hidden=k!==view;});}
+  function setError(el,text,action){
+    el.textContent=text||'';
+    if(text&&action){
+      var b=document.createElement(action.href?'a':'button');b.className='sa-link';b.textContent=action.text;
+      if(action.href){b.href=action.href;}else{b.type='button';b.addEventListener('click',action.onClick);}
+      el.appendChild(b);
+    }
+  }
+  function showAuth(mode,opts){
+    opts=opts||{};
+    show('auth');
+    $('saCreateCard').hidden=mode!=='create';
+    $('saLoginCard').hidden=mode!=='login';
+    setError($('saCreateError'),'');setError($('saLoginError'),'');
+    if(opts.email) $('liEmail').value=opts.email;
+    if(opts.error) setError(mode==='login'?$('saLoginError'):$('saCreateError'),opts.error,opts.action);
+    var card=mode==='login'?$('saLoginCard'):$('saCreateCard');
+    if(card.scrollIntoView) card.scrollIntoView({block:'nearest'});
+  }
+  function busy(btn,on,label){
+    if(on){btn.dataset.label=btn.textContent;btn.innerHTML='<span class="sa-spinner" aria-hidden="true"></span>'+label;}
+    else if(btn.dataset.label){btn.textContent=btn.dataset.label;}
+    btn.disabled=on;
+  }
+  $('saToLogin').addEventListener('click',function(){showAuth('login',{email:$('caEmail').value.trim()});$('liEmail').focus();});
+  $('saToCreate').addEventListener('click',function(){showAuth('create');$('caFirst').focus();});
+  document.querySelectorAll('.sa-pw-toggle').forEach(function(b){
+    b.innerHTML=EYE;
+    b.addEventListener('click',function(){
+      var input=b.parentNode.querySelector('input'),showing=input.type==='text';
+      input.type=showing?'password':'text';b.innerHTML=showing?EYE:EYE_OFF;
+      b.setAttribute('aria-pressed',String(!showing));b.setAttribute('aria-label',showing?'Show password':'Hide password');
+    });
+  });
+  var validEmail=function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);};
+
+  // Create Admin → create-demo-admin (create-admin-public's fields) → sign in
+  $('saCreateForm').addEventListener('submit',async function(ev){
+    ev.preventDefault();
+    var f=this.elements,err=$('saCreateError'),btn=$('saCreateBtn');
+    var v=function(n){return (f[n].value||'').trim();};
+    setError(err,'');
+    var order=['first_name','last_name','whatsapp_number','phone','email','password','confirm_password','address','city','state','pincode'];
+    for(var i=0;i<order.length;i++){if(!v(order[i])){setError(err,'Please fill in every field.');f[order[i]].focus();return;}}
+    var email=v('email').toLowerCase();
+    if(!validEmail(email)){setError(err,'Please enter a valid email address.');f.email.focus();return;}
+    if(f.password.value.length<6){setError(err,'Password must be at least 6 characters.');f.password.focus();return;}
+    if(f.password.value!==f.confirm_password.value){setError(err,'Password and Confirm Password do not match.');f.confirm_password.focus();return;}
+    busy(btn,true,'Creating your demo…');
+    try{
+      await invoke('create-demo-admin',{
+        first_name:v('first_name'),last_name:v('last_name'),phone:v('phone'),whatsapp_number:v('whatsapp_number'),
+        email:email,password:f.password.value,address:v('address'),city:v('city'),state:v('state'),pincode:v('pincode')
+      });
+    }catch(e){
+      busy(btn,false);
+      if(e.code==='email_taken') setError(err,MSG.email_taken,{text:'Log in instead',onClick:function(){showAuth('login',{email:email});$('liPassword').focus();}});
+      else setError(err,messageFor(e));
+      return;
+    }
+    try{
+      var session=await signIn(email,f.password.value);
+      busy(btn,false);this.reset();
+      await enterApp(session);
+    }catch(e){
+      busy(btn,false);
+      showAuth('login',{email:email,error:'Your demo account is ready — log in to continue. ('+messageFor(e)+')'});
+    }
+  });
+
+  // Log in
+  $('saLoginForm').addEventListener('submit',async function(ev){
+    ev.preventDefault();
+    var f=this.elements,err=$('saLoginError'),btn=$('saLoginBtn');
+    var email=(f.email.value||'').trim().toLowerCase();
+    setError(err,'');
+    if(!validEmail(email)){setError(err,'Please enter your email address.');f.email.focus();return;}
+    if(!f.password.value){setError(err,'Please enter your password.');f.password.focus();return;}
+    busy(btn,true,'Logging in…');
+    try{
+      var session=await signIn(email,f.password.value);
+      busy(btn,false);f.password.value='';
+      await enterApp(session);
+    }catch(e){busy(btn,false);setError(err,messageFor(e));}
+  });
+
+  // ── Signed in ──
+  var me=null, budgetOver=false;
+  var training=[], pendingTrain=null, trainBusy=false;
+  var turns=[], testBusy=false, testRun=0;
+  var fmtInr=function(n){var v=Number(n||0);return v.toLocaleString('en-IN',{minimumFractionDigits:Number.isInteger(v)?0:2,maximumFractionDigits:2});};
+
+  async function loadDemoRow(){
+    var r=await sb.from('demo_admins').select('ai_budget_inr, ai_used_inr, converted_at').eq('admin_user_id',me.id).maybeSingle();
+    if(r.error){var e=new Error(r.error.message);if(isNetworkError(r.error.message))e.code='network';throw e;}
+    return r.data;
+  }
+  function renderUsage(row){
+    var u=$('saUsage');
+    u.innerHTML='AI used <b>₹'+fmtInr(row.ai_used_inr)+'</b> of ₹'+fmtInr(row.ai_budget_inr);
+    u.hidden=false;
+  }
+  async function refreshUsage(){
+    try{
+      var row=await loadDemoRow();
+      if(row){renderUsage(row);if(Number(row.ai_used_inr)>=Number(row.ai_budget_inr)) setBudgetOver(true);}
+    }catch(_){}
+  }
+  function setBudgetOver(on){
+    budgetOver=on;
+    $('saBudget').hidden=!on;
+    $('saOnboard').href=cfg.appUrl+'/onboarding?from=demo'+(me&&me.email?'&email='+encodeURIComponent(me.email):'');
+    updateInputs();
+  }
+
+  async function enterApp(session){
+    me=session.user;
+    show('boot');
+    var row;
+    try{row=await loadDemoRow();}
+    catch(e){showAuth('login',{email:me.email,error:messageFor(e)});return;}
+    if(!row||row.converted_at){
+      // Not a demo account (or already gone live): the demo would act on a real business.
+      await sb.auth.signOut();
+      showAuth('login',{
+        email:me&&me.email,
+        error:row?'Your demo account is live now — continue in the WooChat app.':'This login is for Live Demo accounts. To use your WooChat account, open the app.',
+        action:{text:'Open WooChat',href:cfg.appUrl+'/login'}
+      });
+      me=null;return;
+    }
+    show('app');
+    renderUsage(row);
+    setBudgetOver(Number(row.ai_used_inr)>=Number(row.ai_budget_inr));
+    turns=[];testRun++;renderTest();
+    await loadTraining();
+  }
+
+  function handleAgentError(e){
+    if(e&&e.code==='demo_budget_over'){setBudgetOver(true);return;}
+    if(e&&e.status===401){signOutTo(MSG.session);return;}
+    toast(messageFor(e),'error');
+  }
+  async function signOutTo(message){
+    show('boot'); // first, so the SIGNED_OUT listener below doesn't treat this as an expired session
+    try{await sb.auth.signOut();}catch(_){}
+    var email=me&&me.email;
+    me=null;training=[];turns=[];testRun++;budgetOver=false;$('saBudget').hidden=true;$('saUsage').hidden=true;
+    showAuth('login',{email:email,error:message});
+  }
+  $('saLogout').addEventListener('click',function(){signOutTo('');});
 
   // Tabs
   var tabs=document.querySelectorAll('.sa-tab');
-  var trainerPanel=document.getElementById('saPanelTrainer');
-  var soonPanel=document.getElementById('saPanelSoon');
-  var settingsPanel=document.getElementById('saPanelSettings');
+  var trainerPanel=$('saPanelTrainer'),soonPanel=$('saPanelSoon'),settingsPanel=$('saPanelSettings');
   tabs.forEach(function(t){
     t.addEventListener('click',function(){
       tabs.forEach(function(x){x.setAttribute('aria-selected',x===t?'true':'false');});
@@ -429,70 +773,164 @@
       trainerPanel.hidden=tab!=='trainer';
       settingsPanel.hidden=tab!=='Settings';
       soonPanel.hidden=tab==='trainer'||tab==='Settings';
-      if(!soonPanel.hidden) document.getElementById('saSoonTitle').textContent=tab;
+      if(!soonPanel.hidden) $('saSoonTitle').textContent=tab;
     });
   });
 
-  // Trainer chat
-  var trainMsgs=document.getElementById('saTrainMsgs');
-  var trainInput=document.getElementById('saTrainInput');
-  var trainSend=document.getElementById('saTrainSend');
-  var clearTrain=document.getElementById('saClearTrain');
+  function row(rowCls,bubbleCls,text){
+    var r=document.createElement('div');r.className=rowCls;
+    var b=document.createElement('div');b.className=bubbleCls;b.textContent=text;
+    r.appendChild(b);return r;
+  }
+  var wait=function(ms){return new Promise(function(res){setTimeout(res,ms);});};
+
+  // ── Trainer chat → sales-agent { action: "train" } ──
+  var trainMsgs=$('saTrainMsgs'),trainInput=$('saTrainInput'),trainSend=$('saTrainSend'),clearTrain=$('saClearTrain');
   // the full placeholder wraps to two lines on narrow screens, so phones get a shorter one
   var narrow=window.matchMedia('(max-width:767px)');
   function setTrainPlaceholder(){trainInput.placeholder=narrow.matches?'Tell me about your business…':'Tell the trainer about your business, or attach a picture…';}
   setTrainPlaceholder();
   if(narrow.addEventListener) narrow.addEventListener('change',setTrainPlaceholder);
+
+  async function loadTraining(){
+    trainMsgs.innerHTML='<div class="sa-empty"><span class="sa-spinner" aria-hidden="true"></span> Loading your training…</div>';
+    var r=await sb.from('sales_agent_training').select('id, role, content, created_at').eq('owner_id',me.id).order('created_at').limit(400);
+    if(r.error){toast(isNetworkError(r.error.message)?MSG.network:'Could not load your past training. Please refresh.','error');training=[];}
+    else training=(r.data||[]).filter(function(t){return t.role!=='system';});
+    renderTraining();
+  }
   function renderTraining(){
     trainMsgs.innerHTML='';
-    if(!training.length){
+    if(!training.length&&!pendingTrain){
       var e=document.createElement('div');e.className='sa-empty';
       e.innerHTML=SPARKLES+'This is your own training space — train the AI however you like. The way you train it here is exactly how it will respond and talk to your customers.';
       trainMsgs.appendChild(e);
     }
-    training.forEach(function(t){trainMsgs.appendChild(row('sa-row'+(t.role==='admin'?' me':''),'sa-bubble',t.text));});
+    training.forEach(function(t){trainMsgs.appendChild(row('sa-row'+(t.role==='admin'?' me':''),'sa-bubble',t.content));});
+    if(pendingTrain){
+      trainMsgs.appendChild(row('sa-row me','sa-bubble',pendingTrain));
+      var p=row('sa-row','sa-bubble pending','Learning…');
+      p.firstChild.insertAdjacentHTML('afterbegin','<span class="sa-spinner" aria-hidden="true"></span>');
+      trainMsgs.appendChild(p);
+    }
     trainMsgs.scrollTop=trainMsgs.scrollHeight;
   }
-  function sendTrain(){
-    var text=trainInput.value.trim();if(!text)return;
-    training.push({role:'admin',text:text});
-    trainInput.value='';trainSend.disabled=true;growTrainInput();renderTraining();
+  async function sendTrain(){
+    var text=trainInput.value.trim();
+    if(!text||trainBusy||budgetOver||!me) return;
+    trainBusy=true;pendingTrain=text;
+    trainInput.value='';growTrainInput();updateInputs();renderTraining();
+    try{
+      await invoke('sales-agent',{action:'train',message:text});
+      pendingTrain=null;
+      await loadTraining();
+    }catch(e){
+      pendingTrain=null;
+      if(!trainInput.value){trainInput.value=text;growTrainInput();}
+      handleAgentError(e);
+    }finally{
+      trainBusy=false;pendingTrain=null;
+      if(me){renderTraining();refreshUsage();}
+      updateInputs();
+    }
   }
   // grow with the text, up to the CSS max-height
   function growTrainInput(){trainInput.style.height='auto';trainInput.style.height=trainInput.scrollHeight+'px';}
-  trainInput.addEventListener('input',function(){trainSend.disabled=!trainInput.value.trim();growTrainInput();});
+  trainInput.addEventListener('input',function(){updateInputs();growTrainInput();});
   trainInput.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendTrain();}});
-  document.getElementById('saTrainForm').addEventListener('submit',function(e){e.preventDefault();sendTrain();});
-  clearTrain.addEventListener('click',function(){training=[];renderTraining();});
+  $('saTrainForm').addEventListener('submit',function(e){e.preventDefault();sendTrain();});
+  clearTrain.addEventListener('click',async function(){
+    if(trainBusy||!me) return;
+    clearTrain.disabled=true;
+    try{
+      await invoke('sales-agent',{action:'reset_training'});
+      training=[];renderTraining();
+      toast('Trainer chat cleared — what it learned stays.','ok');
+    }catch(e){handleAgentError(e);}
+    finally{clearTrain.disabled=false;}
+  });
 
-  // Test as a customer
-  var testMsgs=document.getElementById('saTestMsgs');
-  var testInput=document.getElementById('saTestInput');
-  var testSend=document.getElementById('saTestSend');
-  var newTest=document.getElementById('saNewTest');
+  // ── Test as a customer → sales-agent { action: "test", history } ──
+  var testMsgs=$('saTestMsgs'),testInput=$('saTestInput'),testSend=$('saTestSend'),newTest=$('saNewTest');
   function renderTest(){
     testMsgs.innerHTML='';
-    if(!turns.length){
+    if(!turns.length&&!testBusy){
       var e=document.createElement('p');e.className='sa-ph-empty';
       e.textContent='This is where you test your AI — chat with it just like a real customer would, e.g. "What\'s the price?" or "Do you deliver to my area?". It will reply exactly the way you trained it.';
       testMsgs.appendChild(e);
     }
-    turns.forEach(function(t){testMsgs.appendChild(row('sa-ph-row'+(t.from==='agent'?' agent':''),'sa-ph-bubble',t.text));});
-    newTest.disabled=!turns.length;
+    turns.forEach(function(t){
+      var r=row('sa-ph-row'+(t.from==='agent'?' agent':''),'sa-ph-bubble','');
+      var b=r.firstChild;
+      (t.photos||[]).forEach(function(p){var img=document.createElement('img');img.src=p.url;img.alt=p.name||'';img.loading='lazy';b.appendChild(img);});
+      var txt=document.createElement('p');txt.textContent=t.text;b.appendChild(txt);
+      if(t.note){var n=document.createElement('p');n.className='sa-ph-note';n.textContent=t.note;b.appendChild(n);}
+      testMsgs.appendChild(r);
+    });
+    if(testBusy){
+      var ty=row('sa-ph-row agent','sa-ph-bubble sa-ph-typing','typing…');
+      ty.firstChild.insertAdjacentHTML('afterbegin','<span class="sa-spinner" aria-hidden="true"></span>');
+      testMsgs.appendChild(ty);
+    }
     testMsgs.scrollTop=testMsgs.scrollHeight;
+    updateInputs();
   }
-  function sendTest(){
-    var text=testInput.value.trim();if(!text)return;
-    turns.push({from:'customer',text:text});
-    testInput.value='';testSend.disabled=true;renderTest();
+  async function sendTest(){
+    var text=testInput.value.trim();
+    if(!text||testBusy||budgetOver||!me) return;
+    var run=++testRun, before=turns.slice();
+    turns=turns.concat([{from:'customer',text:text}]);
+    testInput.value='';testBusy=true;renderTest();
+    try{
+      var r=await invoke('sales-agent',{action:'test',history:turns.map(function(t){return {from:t.from,text:t.text};})});
+      if(run!==testRun) return;
+      var notes=[r.send_payment?'Would send payment details'+(r.amount?' (₹'+r.amount+')':''):'',r.handover?'Would hand the chat to a team member':''].filter(Boolean).join(' · ');
+      // One message at a time, as on WhatsApp (photos and notes with the last).
+      var bubbles=(r.bubbles&&r.bubbles.length)?r.bubbles:[r.reply||'(no reply)'];
+      for(var i=0;i<bubbles.length;i++){
+        if(i>0) await wait(Math.min(1500,300+bubbles[i].length*15));
+        if(run!==testRun) return;
+        var last=i===bubbles.length-1;
+        turns.push({from:'agent',text:bubbles[i],photos:last?(r.photos||[]):[],note:last?notes:''});
+        if(last) testBusy=false;
+        renderTest();
+      }
+    }catch(e){
+      if(run!==testRun) return;
+      turns=before;
+      if(!testInput.value) testInput.value=text;
+      handleAgentError(e);
+    }finally{
+      if(run===testRun){testBusy=false;renderTest();if(me) refreshUsage();}
+    }
   }
-  function clearTest(){turns=[];renderTest();}
-  testInput.addEventListener('input',function(){testSend.disabled=!testInput.value.trim();});
+  testInput.addEventListener('input',updateInputs);
   testInput.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendTest();}});
-  document.getElementById('saTestForm').addEventListener('submit',function(e){e.preventDefault();sendTest();});
-  newTest.addEventListener('click',clearTest);
+  $('saTestForm').addEventListener('submit',function(e){e.preventDefault();sendTest();});
+  newTest.addEventListener('click',function(){testRun++;testBusy=false;turns=[];renderTest();});
 
-  renderTraining();renderTest();
+  function updateInputs(){
+    trainInput.disabled=budgetOver;
+    trainSend.disabled=budgetOver||trainBusy||!trainInput.value.trim();
+    $('saAttach').disabled=budgetOver;
+    testInput.disabled=budgetOver;
+    testSend.disabled=budgetOver||testBusy||!testInput.value.trim();
+    newTest.disabled=!turns.length&&!testBusy;
+  }
+
+  // ── Start: an existing session goes straight in (it stays across refreshes) ──
+  if(!sb){
+    showAuth('create',{error:"Couldn't load the demo. Check your internet connection and refresh the page."});
+    return;
+  }
+  sb.auth.onAuthStateChange(function(event){
+    // Signed out in another tab, or the session could not be refreshed.
+    if(event==='SIGNED_OUT'&&!views.app.hidden){setTimeout(function(){signOutTo(MSG.session);},0);}
+  });
+  sb.auth.getSession().then(function(r){
+    var session=r&&r.data&&r.data.session;
+    if(session) enterApp(session); else showAuth('create');
+  }).catch(function(){showAuth('create');});
 })();
 </script>
 </body>
