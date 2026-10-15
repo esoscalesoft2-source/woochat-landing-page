@@ -478,7 +478,7 @@
               </div>
               <div class="sa-field">
                 <label for="saPhones">Test numbers</label>
-                <textarea id="saPhones" class="sa-control" rows="2" placeholder="+91 98765 43210, +91 91234 56789"></textarea>
+                <input id="saPhones" class="sa-control" type="tel" inputmode="tel" autocomplete="off" maxlength="20" placeholder="+91 98765 43210">
                 <p class="sa-help">For testing: chats with these numbers — existing or new — are always answered by the Sales Agent, whoever they're assigned to. Change the list any time; "Reset test chats" starts them all from scratch. Real customers reach the agent through an AI chatbot user set to "New Chatbot" (Users), or from Chats (⋮ → Assign to Sales Agent).</p>
               </div>
               <div class="sa-field">
@@ -714,6 +714,20 @@ var WOOCHAT_DEMO_CONFIG = {
   var training=[], pendingTrain=null, trainBusy=false;
   var turns=[], testBusy=false, testRun=0;
   var fmtInr=function(n){var v=Number(n||0);return v.toLocaleString('en-IN',{minimumFractionDigits:Number.isInteger(v)?0:2,maximumFractionDigits:2});};
+  // Settings → Test numbers takes one number only: digits, spaces, dashes and a leading +, at most 15 digits.
+  function onePhone(v){
+    var first=String(v||'').split(/[,;\/|\n\r]/)[0]; // a pasted list keeps its first number
+    var s=first.replace(/[^\d+ -]/g,'').replace(/(?!^)\+/g,'').replace(/ {2,}/g,' ');
+    var out='',digits=0;
+    for(var i=0;i<s.length;i++){
+      var c=s[i];
+      if(/\d/.test(c)){if(digits>=15)break;digits++;}
+      else if(digits>=10&&c===' '&&/\d/.test(s.slice(i+1))&&s.slice(i+1).replace(/\D/g,'').length>=6) break; // a second number after a space
+      out+=c;
+    }
+    return out.replace(/^ +/,'');
+  }
+  $('saPhones').addEventListener('input',function(){var v=onePhone(this.value);if(v!==this.value)this.value=v;});
 
   async function loadDemoRow(){
     var r=await sb.from('demo_admins').select('ai_budget_inr, ai_used_inr, converted_at').eq('admin_user_id',me.id).maybeSingle();
@@ -755,6 +769,8 @@ var WOOCHAT_DEMO_CONFIG = {
       me=null;return;
     }
     show('app');
+    // Test number = the WhatsApp number given at sign-up (create-demo-admin keeps it in user_metadata)
+    $('saPhones').value=onePhone((me.user_metadata&&me.user_metadata.whatsapp_number)||'');
     renderUsage(row);
     setBudgetOver(Number(row.ai_used_inr)>=Number(row.ai_budget_inr));
     turns=[];testRun++;renderTest();
@@ -770,7 +786,7 @@ var WOOCHAT_DEMO_CONFIG = {
     show('boot'); // first, so the SIGNED_OUT listener below doesn't treat this as an expired session
     try{await sb.auth.signOut();}catch(_){}
     var email=me&&me.email;
-    me=null;training=[];turns=[];testRun++;budgetOver=false;$('saBudget').hidden=true;$('saUsage').hidden=true;
+    me=null;training=[];turns=[];testRun++;budgetOver=false;$('saPhones').value='';$('saBudget').hidden=true;$('saUsage').hidden=true;
     showAuth('login',{email:email,error:message});
   }
   $('saLogout').addEventListener('click',function(){signOutTo('');});
