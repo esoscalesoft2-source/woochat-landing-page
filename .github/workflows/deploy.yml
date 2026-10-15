@@ -28,5 +28,5 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          accountId: 9c934184f0dc31b521b76ee7c32e41ee
           command: pages deploy dist --project-name=woochat-landing-page --branch=main --commit-hash=${{ github.sha }}
