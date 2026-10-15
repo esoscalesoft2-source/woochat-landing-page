@@ -306,6 +306,10 @@
     .sa-auth-switch{margin-top:.7rem}
     .sa-boot{height:100%;min-height:0}
   }
+  /* Stacked layout: the glow sized as % of the tall section turns into a stripe; keep it round like on desktop */
+  @media (max-width:1023px){
+    .sa::before{top:0;right:0;width:150vw;height:auto;aspect-ratio:1;transform:translate(45%,-35%)}
+  }
 </style>
 </head>
 <body class="demo-page">

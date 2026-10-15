@@ -319,6 +319,12 @@
   @media(max-width:880px){.contact-grid{grid-template-columns:1fr;gap:28px}}
 
   [id]{scroll-margin-top:84px}
+  /* Mobile: the orange glows sized as % of a tall section stretch into a hard-edged stripe; keep them round like on desktop */
+  @media (max-width:880px){
+    .hero::before{top:0;right:0;width:150vw;height:auto;aspect-ratio:1;transform:translate(45%,-35%)}
+    .page-hero::before{top:0;left:50%;width:140vw;height:auto;aspect-ratio:1;transform:translate(-50%,-55%)}
+    .deal::before,.fspot::after{top:0;right:0;width:120%;height:auto;aspect-ratio:1;transform:translate(45%,-45%)}
+  }
 </style>
 </head>
 <body>
