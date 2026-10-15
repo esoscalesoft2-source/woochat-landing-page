@@ -119,7 +119,7 @@
   .sa::before{content:"";position:absolute;top:-30%;right:-10%;width:60%;height:120%;background:radial-gradient(circle,rgba(252,135,6,.16),transparent 62%);pointer-events:none}
   .sa [hidden]{display:none!important}
   .sa :focus-visible{outline:2px solid var(--sa-primary);outline-offset:2px;border-radius:calc(.75rem - 2px)}
-  .sa-wrap{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:1rem 1rem 1.5rem}
+  .sa-wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;padding:1rem 24px 1.5rem}
   .sa-ico{width:1rem;height:1rem;flex-shrink:0}
   .sa-head{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:.75rem;margin-bottom:1rem}
   .sa h1{display:flex;align-items:center;gap:.55rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:1.6rem;line-height:2rem;font-weight:800;letter-spacing:-.02em}
@@ -205,16 +205,25 @@
   .sa-ph-send:disabled{opacity:.5;pointer-events:none}
   .sa-ph-send .sa-ico{width:1.25rem;height:1.25rem}
   @media (min-width:768px){
-    .sa-wrap{padding:1rem 1.5rem 1.5rem}
-    .sa-tablist{grid-template-columns:repeat(7,minmax(0,1fr))}
+    .sa-tablist{display:flex;flex-wrap:wrap}
+    .sa-tab{flex:1 1 auto;padding:.4rem .6rem}
   }
+  /* Desktop: navbar + demo fill exactly one screen; only the chat / settings areas scroll */
   @media (min-width:1024px){
-    .sa-grid{grid-template-columns:minmax(0,1fr) 400px;align-items:start}
-    .sa-phone{position:sticky;top:calc(70px + 1rem)}
+    html:has(body.demo-page){zoom:.8}
+    body.demo-page{display:flex;flex-direction:column;height:calc(100vh / .8);height:calc(100dvh / .8);overflow:hidden}
+    .demo-page header{flex-shrink:0}
+    .demo-page .sa{flex:1;min-height:0}
+    .sa-wrap{height:100%}
+    .sa-grid{grid-template-columns:minmax(0,1fr) 360px;grid-template-rows:minmax(0,1fr)}
+    .sa-tabs{display:flex;flex-direction:column;min-height:0}
+    .sa-panel:not([hidden]){display:flex;flex:1;min-height:0}
+    .sa-panel>.sa-card{flex:1;min-width:0}
+    .sa-trainer,.sa-settings,.sa-phone{height:auto;min-height:0}
   }
 </style>
 </head>
-<body>
+<body class="demo-page">
 <header>
   <div class="wrap">
     <nav>
