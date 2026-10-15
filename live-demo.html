@@ -295,7 +295,8 @@
     .sa-panel:not([hidden]){display:flex;flex:1;min-height:0}
     .sa-panel>.sa-card{flex:1;min-width:0}
     .sa-trainer,.sa-settings,.sa-phone{height:auto;min-height:0}
-    .sa-auth-wrap{overflow-y:auto;scrollbar-width:none}
+    .sa-auth-wrap{display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:none}
+    .sa-auth-wrap>.sa-auth{width:100%;margin:auto}
     .sa-auth-wrap::-webkit-scrollbar{display:none}
     .sa-auth-card{padding:1.4rem 1.75rem}
     .sa-auth-head{margin-bottom:1rem}
@@ -320,7 +321,7 @@
         <a href="index.html#contact">Contact</a>
       </div>
       <div class="nav-right">
-        <a class="btn btn-ghost nav-cta nav-demo" href="/live-demo">Live Demo</a>
+        <a class="btn btn-primary nav-cta nav-demo" href="/live-demo">Live Demo</a>
         <button class="menu-btn" aria-label="Open menu" onclick="document.getElementById('mobile-menu').style.display=(document.getElementById('mobile-menu').style.display==='flex'?'none':'flex')">&#9776;</button>
       </div>
     </nav>
