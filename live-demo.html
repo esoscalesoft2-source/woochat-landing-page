@@ -160,7 +160,7 @@
   .sa-comp-btn{background:transparent;color:var(--sa-muted-fg)}
   .sa-comp-btn:hover{background:var(--sa-muted);color:var(--sa-fg)}
   .sa-comp-input{flex:1;min-width:0;max-height:6rem;resize:none;overflow-y:auto;padding:.5rem .25rem;border:0;background:transparent;color:var(--sa-fg);font-family:inherit;font-size:.875rem;line-height:1.25rem;scrollbar-width:thin;scrollbar-color:var(--sa-border) transparent}
-  .sa-comp-input::placeholder{color:var(--sa-muted-fg)}
+  .sa-comp-input::placeholder{color:var(--sa-muted-fg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .sa .sa-comp-input:focus-visible{outline:none}
   .sa-comp-send{background:var(--sa-primary);color:#160b00;box-shadow:0 6px 18px -6px rgba(252,135,6,.6)}
   .sa-comp-send:hover{background:var(--accent-press)}
@@ -204,6 +204,11 @@
   .sa-ph-send:hover{background:#06cf9c}
   .sa-ph-send:disabled{opacity:.5;pointer-events:none}
   .sa-ph-send .sa-ico{width:1.25rem;height:1.25rem}
+  /* Mobile: the test phone runs edge to edge, no frame */
+  @media (max-width:767px){
+    .sa-phone{height:calc(100vh - 71px);height:calc(100dvh - 71px);margin:0 -24px;border-radius:0;border-width:6px 0;box-shadow:none}
+    .sa-wrap{padding-bottom:0}
+  }
   @media (min-width:768px){
     .sa-tablist{display:flex;flex-wrap:wrap}
     .sa-tab{flex:1 1 auto;padding:.4rem .6rem}
@@ -414,6 +419,11 @@
   var trainInput=document.getElementById('saTrainInput');
   var trainSend=document.getElementById('saTrainSend');
   var clearTrain=document.getElementById('saClearTrain');
+  // the full placeholder wraps to two lines on narrow screens, so phones get a shorter one
+  var narrow=window.matchMedia('(max-width:767px)');
+  function setTrainPlaceholder(){trainInput.placeholder=narrow.matches?'Tell me about your business…':'Tell the trainer about your business, or attach a picture…';}
+  setTrainPlaceholder();
+  if(narrow.addEventListener) narrow.addEventListener('change',setTrainPlaceholder);
   function renderTraining(){
     trainMsgs.innerHTML='';
     if(!training.length){
