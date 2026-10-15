@@ -126,6 +126,19 @@
   .sa h1 .sa-ico{width:1.5rem;height:1.5rem;color:var(--sa-primary)}
   .sa-badge{display:inline-flex;align-items:center;border-radius:999px;border:1px solid rgba(252,135,6,.32);background:var(--accent-soft);padding:.125rem .6rem;font-family:'Inter',sans-serif;font-size:10px;line-height:1rem;font-weight:700;letter-spacing:.02em;color:var(--sa-primary)}
   .sa-sub{margin-top:.25rem;font-size:.875rem;line-height:1.25rem;color:var(--sa-muted-fg)}
+  .sa-head-text{flex:1;min-width:0}
+  .sa-title-row{display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+  .sa-test-now{display:none;align-items:center;gap:.35rem;flex-shrink:0;padding:.45rem .85rem;border-radius:10px;background:var(--accent);color:#160b00;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:700;white-space:nowrap;box-shadow:0 8px 22px -10px rgba(252,135,6,.6);transition:background .15s}
+  .sa-test-now:hover{background:var(--accent-press)}
+  .sa-test-now .sa-ico{width:.9rem;height:.9rem}
+  .sa-phone{scroll-margin-top:71px}
+  @media (max-width:1023px){.sa-test-now{display:inline-flex}}
+  @media (max-width:767px){
+    .sa h1{font-size:1.3rem;gap:.45rem;white-space:nowrap}
+    .sa h1 .sa-ico{width:1.25rem;height:1.25rem}
+    .sa-test-now{padding:.4rem .7rem;font-size:.78rem}
+  }
+  @media (max-width:359px){.sa-badge{display:none}}
   .sa-btn{display:inline-flex;align-items:center;justify-content:center;gap:.375rem;white-space:nowrap;height:2.5rem;padding:0 1rem;border-radius:calc(.75rem - 2px);border:1px solid transparent;background:transparent;color:inherit;font-family:inherit;font-size:.875rem;line-height:1.25rem;font-weight:500;cursor:pointer;transition:background-color .15s,color .15s}
   .sa-btn:disabled{opacity:.5;pointer-events:none}
   .sa-btn-outline{border-color:var(--sa-border);background:var(--sa-bg)}
@@ -262,12 +275,18 @@
     <!-- Header + training -->
     <div class="sa-tabs">
     <div class="sa-head">
-      <div>
-        <h1>
-          <svg class="sa-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
-          Sales Agent
-          <span class="sa-badge">New</span>
-        </h1>
+      <div class="sa-head-text">
+        <div class="sa-title-row">
+          <h1>
+            <svg class="sa-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+            Sales Agent
+            <span class="sa-badge">New</span>
+          </h1>
+          <a class="sa-test-now" href="#saTestPhone">
+            Test now
+            <svg class="sa-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+          </a>
+        </div>
         <p class="sa-sub">Train an AI salesperson by chatting with it and adding your catalog, then test it as a customer.</p>
       </div>
     </div>
@@ -343,7 +362,7 @@
       </div>
 
       <!-- Test chat -->
-      <section class="sa-phone" aria-label="Test chat">
+      <section class="sa-phone" id="saTestPhone" aria-label="Test chat">
         <div class="sa-ph-head">
           <div class="sa-avatar"><svg class="sa-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></div>
           <div class="sa-ph-who">
