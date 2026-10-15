@@ -245,9 +245,11 @@
   .sa-link{padding:0;border:0;background:none;color:var(--sa-primary);font:inherit;font-weight:600;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
   @media (min-width:640px){
     .sa-auth-card{padding:2rem}
-    .sa-auth-grid{grid-template-columns:1fr 1fr}
-    .sa-auth-grid--one{grid-template-columns:1fr}
-    .sa-span-2{grid-column:span 2}
+    .sa-auth-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+    .sa-auth-grid>.sa-field{grid-column:span 3}
+    .sa-auth-grid>.sa-third{grid-column:span 2}
+    .sa-auth-grid--one>.sa-field{grid-column:span 6}
+    .sa-auth-grid>.sa-span-2{grid-column:span 6}
   }
 
   /* Signed-in extras: usage, log out, budget card, live chat states, toast */
@@ -293,7 +295,14 @@
     .sa-panel:not([hidden]){display:flex;flex:1;min-height:0}
     .sa-panel>.sa-card{flex:1;min-width:0}
     .sa-trainer,.sa-settings,.sa-phone{height:auto;min-height:0}
-    .sa-auth-wrap{overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--sa-border) transparent}
+    .sa-auth-wrap{overflow-y:auto;scrollbar-width:none}
+    .sa-auth-wrap::-webkit-scrollbar{display:none}
+    .sa-auth-card{padding:1.4rem 1.75rem}
+    .sa-auth-head{margin-bottom:1rem}
+    .sa-auth-grid{gap:.7rem 1rem}
+    .sa-auth-grid .sa-field label{margin-bottom:.3rem}
+    .sa-auth-submit{margin-top:.9rem}
+    .sa-auth-switch{margin-top:.7rem}
     .sa-boot{height:100%;min-height:0}
   }
 </style>
@@ -312,7 +321,6 @@
       </div>
       <div class="nav-right">
         <a class="btn btn-ghost nav-cta nav-demo" href="/live-demo">Live Demo</a>
-        <a class="btn btn-primary nav-cta" href="https://woochat.esowolf.in">Start free trial</a>
         <button class="menu-btn" aria-label="Open menu" onclick="document.getElementById('mobile-menu').style.display=(document.getElementById('mobile-menu').style.display==='flex'?'none':'flex')">&#9776;</button>
       </div>
     </nav>
@@ -324,7 +332,6 @@
     <a href="index.html#pricing">Pricing</a>
     <a href="index.html#contact">Contact</a>
     <a href="/live-demo">Live Demo</a>
-    <a class="btn btn-primary" href="https://woochat.esowolf.in" style="margin-top:10px;justify-content:center">Start free trial &rarr;</a>
   </div>
 </header>
 <section class="sa" aria-label="Sales Agent live demo">
@@ -351,9 +358,9 @@
             <div class="sa-field"><label for="caPassword">Password</label><div class="sa-pw"><input id="caPassword" name="password" class="sa-control" type="password" autocomplete="new-password" placeholder="At least 6 characters"><button type="button" class="sa-pw-toggle" aria-label="Show password" aria-pressed="false"></button></div></div>
             <div class="sa-field"><label for="caConfirm">Confirm password</label><div class="sa-pw"><input id="caConfirm" name="confirm_password" class="sa-control" type="password" autocomplete="new-password" placeholder="Same password again"><button type="button" class="sa-pw-toggle" aria-label="Show password" aria-pressed="false"></button></div></div>
             <div class="sa-field sa-span-2"><label for="caAddress">Address</label><input id="caAddress" name="address" class="sa-control" type="text" autocomplete="street-address" placeholder="Address"></div>
-            <div class="sa-field"><label for="caCity">City</label><input id="caCity" name="city" class="sa-control" type="text" autocomplete="address-level2" placeholder="City"></div>
-            <div class="sa-field"><label for="caState">State</label><input id="caState" name="state" class="sa-control" type="text" autocomplete="address-level1" placeholder="State"></div>
-            <div class="sa-field"><label for="caPincode">Pincode</label><input id="caPincode" name="pincode" class="sa-control" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="Pincode"></div>
+            <div class="sa-field sa-third"><label for="caCity">City</label><input id="caCity" name="city" class="sa-control" type="text" autocomplete="address-level2" placeholder="City"></div>
+            <div class="sa-field sa-third"><label for="caState">State</label><input id="caState" name="state" class="sa-control" type="text" autocomplete="address-level1" placeholder="State"></div>
+            <div class="sa-field sa-third"><label for="caPincode">Pincode</label><input id="caPincode" name="pincode" class="sa-control" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="Pincode"></div>
           </div>
           <p class="sa-form-error" id="saCreateError" role="alert"></p>
           <button type="submit" class="sa-auth-submit" id="saCreateBtn">Create Admin</button>
