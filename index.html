@@ -863,18 +863,17 @@ function sendWA(form){
   </div>
 </div>
 <script>
-// Plan checkout — one config block. enabled:false (now) hands the order over on WhatsApp;
-// enabled:true creates a Razorpay order (orderFn), opens Checkout, verifies (verifyFn) and
-// sends the buyer to onboarding with their claim token.
+// Plan checkout — one config block. enabled:true (live) creates a Razorpay order (orderFn),
+// opens Checkout, verifies (verifyFn) and sends the buyer to onboarding; enabled:false hands the order over on WhatsApp.
 var WOOCHAT_PAY = {
-  enabled: false,
+  enabled: true,
   supabaseUrl: 'https://spx.aurotec.in',
   anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzg1NzY1NjAyLCJleHAiOjIxMDExMjU2MDJ9.itvM-4RuNQwyhAGI1l6ddsUt0zCnNYVBASScgQHMdmA',
   orderFn: 'public-plan-order',
   verifyFn: 'public-plan-verify',
   onboardingUrl: 'https://woochat.esowolf.in/onboarding'
 };
-// Test switch: ?paytest=1 turns online payment on for this visit only.
+// Test switch: ?paytest=1 turns online payment on for that visit even when enabled is false.
 try { if (new URLSearchParams(location.search).get('paytest') === '1') WOOCHAT_PAY.enabled = true; } catch (_) {}
 (function(){
   var GST_RATE = 18;
