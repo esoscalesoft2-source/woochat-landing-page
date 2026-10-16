@@ -298,6 +298,21 @@
   .price-card li::before{content:"\2713";color:var(--green);font-weight:800;flex-shrink:0}
   .price-card .btn{width:100%;justify-content:center;font-size:1.02rem;padding:.95rem}
   .price-foot{text-align:center;margin-top:1rem;font-size:.82rem;color:#6f6d78}
+  .price-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch}
+  .price-grid .price-card{position:relative;display:flex;flex-direction:column;padding:36px 28px 30px}
+  .price-grid .price-card ul{margin-bottom:1rem}
+  .price-ai{flex:1;padding-bottom:1.6rem;font-size:.82rem;line-height:1.4;color:var(--muted)}
+  .price-grid .price-amt{font-size:2.6rem}
+  .price-card--soft{border-color:var(--line);background:linear-gradient(180deg,rgba(252,135,6,.03),var(--surface))}
+  .price-card--best{box-shadow:0 30px 70px -30px rgba(0,0,0,.7),0 0 0 1px rgba(252,135,6,.35),0 0 60px -20px rgba(252,135,6,.35)}
+  .price-badge{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);padding:.32rem .85rem;border-radius:999px;background:var(--accent);color:#160b00;font-family:'Plus Jakarta Sans';font-size:.74rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;box-shadow:0 8px 22px -8px rgba(252,135,6,.7)}
+  .price-save{color:var(--green);font-weight:600}
+  .price-wa{display:block;margin-top:.8rem;text-align:center;font-size:.86rem;color:var(--muted);text-decoration:underline;text-underline-offset:3px;transition:color .15s}
+  .price-wa:hover{color:var(--green)}
+  @media (max-width:880px){
+    .price-grid{grid-template-columns:1fr;max-width:460px;margin:0 auto;gap:30px}
+    .price-card--best{order:-1}
+  }
 
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
   .reach h3{font-size:1.3rem;margin-bottom:1.2rem;font-family:'Plus Jakarta Sans'}
@@ -411,8 +426,8 @@
 <section class="page-hero">
   <div class="wrap">
     <span class="eyebrow">Pricing</span>
-    <h1>Pay once, use forever.</h1>
-    <p>No monthly fees, no surprises. Every account starts with a 7-day free trial.</p>
+    <h1>Simple plans. All features.</h1>
+    <p>Every plan includes all features and a 7-day free trial. No card needed.</p>
   </div>
 </section>
 <section class="block">
@@ -420,22 +435,63 @@
     <div class="price-wrap reveal" style="text-align:center">
       <span class="trial-pill">&#10024; 7-day free trial included</span>
     </div>
-    <div class="price-wrap reveal">
-      <div class="price-card">
-        <div class="price-tier">&#10024; Lifetime</div>
-        <div class="price-amt">&#8377;9,999<span>one-time</span></div>
-        <div class="price-sub">Pay once &middot; lifetime access &middot; all features</div>
-        <div class="price-note">&#128293; This one-time price is <strong>only for the first 1,000 users</strong>. After that, new users pay <strong>&#8377;2,499/month</strong>.</div>
+    <div class="price-grid reveal">
+      <div class="price-card price-card--soft">
+        <div class="price-tier">Monthly</div>
+        <div class="price-amt">&#8377;1,499<span>/ month</span></div>
+        <div class="price-sub">Billed monthly &middot; all features</div>
         <ul>
-          <li>Unlimited WhatsApp chats & contacts</li>
-          <li>Templates, auto-replies & automation</li>
-          <li>Send messages in bulk (broadcast)</li>
-          <li>Leads, clients & team members</li>
-          <li>Labels, notes & quick replies</li>
-          <li>Dashboard with reports</li>
-          <li>API & integrations (n8n, Zapier)</li>
+          <li>AI Sales Agent (Tamil &amp; English)</li>
+          <li>24&times;7 AI auto-reply</li>
+          <li>Bulk messages &amp; templates</li>
+          <li>Automation &amp; follow-ups</li>
+          <li>Unlimited team members</li>
+          <li>Leads, contacts &amp; labels</li>
+          <li>Shopify &amp; payment links</li>
+          <li>Reports &amp; dashboard</li>
         </ul>
-        <a class="btn btn-primary" href="/live-demo">Live Demo</a>
+        <p class="price-ai">AI usage billed from your WooChat wallet.</p>
+        <a class="btn btn-outline" href="/live-demo?plan=monthly">Start 7-day free trial &rarr;</a>
+        <a class="price-wa" href="https://wa.me/919751551117?text=Hi%2C%20I'm%20interested%20in%20the%20WOO%20Chat%20Monthly%20plan%20(%E2%82%B91%2C499)." target="_blank" rel="noopener">or talk to us on WhatsApp</a>
+        <div class="price-foot">WhatsApp conversation charges billed at Meta's standard rates.</div>
+      </div>
+      <div class="price-card price-card--soft">
+        <div class="price-tier">6 Months</div>
+        <div class="price-amt">&#8377;7,999<span>/ 6 months</span></div>
+        <div class="price-sub">&asymp; &#8377;1,333/month &middot; <span class="price-save">save &#8377;995</span></div>
+        <ul>
+          <li>AI Sales Agent (Tamil &amp; English)</li>
+          <li>24&times;7 AI auto-reply</li>
+          <li>Bulk messages &amp; templates</li>
+          <li>Automation &amp; follow-ups</li>
+          <li>Unlimited team members</li>
+          <li>Leads, contacts &amp; labels</li>
+          <li>Shopify &amp; payment links</li>
+          <li>Reports &amp; dashboard</li>
+        </ul>
+        <p class="price-ai">AI usage billed from your WooChat wallet.</p>
+        <a class="btn btn-outline" href="/live-demo?plan=6months">Start 7-day free trial &rarr;</a>
+        <a class="price-wa" href="https://wa.me/919751551117?text=Hi%2C%20I'm%20interested%20in%20the%20WOO%20Chat%206%20Months%20plan%20(%E2%82%B97%2C999)." target="_blank" rel="noopener">or talk to us on WhatsApp</a>
+        <div class="price-foot">WhatsApp conversation charges billed at Meta's standard rates.</div>
+      </div>
+      <div class="price-card price-card--best">
+        <span class="price-badge">Best value</span>
+        <div class="price-tier">&#10024; Yearly</div>
+        <div class="price-amt">&#8377;9,999<span>/ year</span></div>
+        <div class="price-sub">&asymp; &#8377;833/month &middot; <span class="price-save">save &#8377;7,989</span></div>
+        <ul>
+          <li>AI Sales Agent (Tamil &amp; English)</li>
+          <li>24&times;7 AI auto-reply</li>
+          <li>Bulk messages &amp; templates</li>
+          <li>Automation &amp; follow-ups</li>
+          <li>Unlimited team members</li>
+          <li>Leads, contacts &amp; labels</li>
+          <li>Shopify &amp; payment links</li>
+          <li>Reports &amp; dashboard</li>
+        </ul>
+        <p class="price-ai">AI usage billed from your WooChat wallet.</p>
+        <a class="btn btn-primary" href="/live-demo?plan=yearly">Start 7-day free trial &rarr;</a>
+        <a class="price-wa" href="https://wa.me/919751551117?text=Hi%2C%20I'm%20interested%20in%20the%20WOO%20Chat%20Yearly%20plan%20(%E2%82%B99%2C999)." target="_blank" rel="noopener">or talk to us on WhatsApp</a>
         <div class="price-foot">WhatsApp conversation charges billed at Meta's standard rates.</div>
       </div>
     </div>

@@ -552,6 +552,15 @@ var WOOCHAT_DEMO_CONFIG = {
 };
 </script>
 <script>
+// The plan picked on the home page's pricing (?plan=monthly|6months|yearly), kept for later steps.
+(function(){
+  try{
+    var plan=new URLSearchParams(location.search).get('plan');
+    if(plan&&['monthly','6months','yearly'].indexOf(plan)>-1) sessionStorage.setItem('woochat_plan',plan);
+  }catch(_){}
+})();
+</script>
+<script>
 // Sales Agent live demo: a demo admin (create-demo-admin) trains and tests the Sales Agent
 // through the App's sales-agent function, on the platform AI with a small budget.
 (function(){
